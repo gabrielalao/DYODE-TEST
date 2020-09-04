@@ -117,11 +117,19 @@ That's why {{block}} which define the content block and {{partial}} which use th
 
 # [2] Please develop a static (Not in BigCommerce) version of these mockups:
 
+Using Vue.js implemented provided sketch
+
 ## HOW TO CHECK
 
-- Copy the source to your local
+- Download source code to your local
+
 - `yarn install` to install the libraries
+
 - `yarn start` to check
+
 - You can check the UI on http://localhost:8080
+
+
+
 
 Thanks for your checking.
