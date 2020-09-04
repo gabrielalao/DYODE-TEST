@@ -1,9 +1,12 @@
 DYODE Developer Assessment Tool (BigCommerce)
 
+Sketch, Image and Fonts are attached to the document
+
 # [1] BigCommerce Proficiency Questions
 
 ## 1. Write a function with Stencil Utils that will return the contents of the cart object. With the response data, check if the a specific product exists in the cart. If true, then add a different product to the cart.
 
+```javascript
 // Loop product in product list
 for (product in product_list) {
     utils.api.cart.getCart({}, (err, response) => {
@@ -39,11 +42,12 @@ for (product in product_list) {
     }
 }
 
+```
+
 ## 2.Using Front Matter, declare the following properties to be utilized in a new store page. What restrictions should be known when writing Front Matter?
 
 ### ○ 15 top seller products, loop through with handlebars to display the name and price in an HTML structure for a carousel plugin.
-- first problem
-
+```javascript
 //Short code
 ---
 carousel: true;
@@ -55,9 +59,9 @@ products:
     <p>{{ price }}</p>
 {{/each}}
     
+```
 ### ○ Cart, loop through with handlebars and display each item names and prices if more than 1 item exists.
-// second problem
-
+```javascript
 cart:
   suggestions:
     limit: x
@@ -69,16 +73,20 @@ if(!is_empty(cart))
         <p>{{ price }}</p>
     {{/each}}  
 }
-
+```
 ## 3.Write your own Custom page template to display the 15 top seller products and cart HTML from question #2. What file structure would your template have to be in? What is required to insure local dev does not break?
 
+```javascript
 "customLayouts": {
     "products": {},
 }
   "products": {
     "product.html":"/test-url/"
 }
+```
+
 `product.html file`
+```script
 carousel: true;
     products:
     top_sellers: 
@@ -87,15 +95,19 @@ carousel: true;
         <p>{{ name }}</p>
         <p>{{ price }}</p>
     {{/each}}
-
+```
 ## 4. Describe how you would add a javascript plugin.
 
+```html
 {{inject "myProductName" product.title}}
 <script>
-// Note the lack of quotes around the jsContext handlebars helper, it becomes a string automatically.
-var jsContext = JSON.parse({{jsContext}}); //jsContext would output "{\"myProductName\": \"Sample Product\"}" which can feed directly into your JavaScript
-console.log(jsContext.myProductName); // Will output: Sample Product
+`Note the lack of quotes around the jsContext handlebars helper, it becomes a string automatically.`
+var jsContext = JSON.parse({{jsContext}}); 
+`jsContext would output "{\"myProductName\": \"Sample Product\"}" which can feed directly into your JavaScript`
+console.log(jsContext.myProductName); 
+`Will output: Sample Product`
 </script>
+```
 
 ## 5. Describe the importance of Page composition and why the {{partial}} and {{block}} helpers are useful.
 
